@@ -19,6 +19,7 @@ async function fetchCities() {
 try{
   let response= await fetch(config.backendEndpoint + "/cities");
 let data= await response.json();
+console.log(data);
 return data;
 }catch(err){
   return null;

@@ -2,24 +2,74 @@
 import config from "../conf/index.js";
 
 //Implementation to extract city from query params
-function getCityFromURL(search) {
+
+async function getCityFromURL(search) {
   // TODO: MODULE_ADVENTURES
   // 1. Extract the city id from the URL's Query Param and return it
-
+  let urlParams = new URLSearchParams(search);
+  const city = urlParams.get("city");
+  //console.log(city);  
+  return city;
 }
 
 //Implementation of fetch call with a paramterized input based on city
 async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
-
+ // const cityName = getCityFromURL();
+  //console.log(cityName);
+try{
+  const response = await fetch(config.backendEndpoint + `/adventures?city=${city}`)
+const data = await response.json();
+console.log(data);
+return data;
+}catch(err){
+  return null; 
 }
-
+}
+// function addCityToDOM(id, city, description, image) {
+// const cityElement=document.createElement("div");
+// cityElement.className="col-6 col-lg-3 mb-4";
+// cityElement.innerHTML=`
+// <a href="pages/adventures/?city=${id}" id="${id}">
+// <div class="tile">
+// <div class="tile-text text-center">
+// <h5>${city}</h5>
+// <p>${description}<p>
+// </div>
+// <img class="img-responsive" src="${image}"/>
+// </div>
+// </a>`
+// document.getElementById("data").append(cityElement);
+// }
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
-
+  //console.log(adventures)
+  adventures.forEach((key) => {
+  const adventureElement=document.createElement("div");
+  adventureElement.className="col-6 col-lg-3 mb-4";
+  adventureElement.innerHTML=`
+  <a href="detail/?adventure=${key.id}" id="${key.id}">
+  <div class="activity-card">
+  <div class="activity-card img">
+  <img class="img-responsive" src="${key.image}"/>
+  </div>
+  <div>
+  <div class="d-flex justify-content-around">
+  <h6>${key.name}</h6>
+  <h6>₹${key.costPerHead}</h6>
+  </div>
+  <div class="d-flex justify-content-around">
+  <h6>Duration</h6>
+  <h6>${key.duration}hr</h6>
+  </div>
+  </div>
+  </div>
+  </a>`
+  document.getElementById("data").append(adventureElement);
+  })
 }
 
 //Implementation of filtering by duration which takes in a list of adventures, the lower bound and upper bound of duration and returns a filtered list of adventures.
