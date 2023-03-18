@@ -119,7 +119,7 @@
             getFiltersFromLocalStorage() !== null
                 ? getFiltersFromLocalStorage()
                 : { duration: "", category: [] };
-
+          
 
         //entry point (executed when DOM is loaded)
         (async function () {
@@ -129,7 +129,7 @@
             console.log(city);
             //Fetches the adventures for the particular city
             adventures = await fetchAdventures(city);
-
+            //console.log(filters)
             //Applies filters on the adventures list
             let filteredAdventures = filterFunction(adventures, filters);
             //console.log(filteredAdventures)

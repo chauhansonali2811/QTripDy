@@ -27,21 +27,7 @@ return data;
   return null; 
 }
 }
-// function addCityToDOM(id, city, description, image) {
-// const cityElement=document.createElement("div");
-// cityElement.className="col-6 col-lg-3 mb-4";
-// cityElement.innerHTML=`
-// <a href="pages/adventures/?city=${id}" id="${id}">
-// <div class="tile">
-// <div class="tile-text text-center">
-// <h5>${city}</h5>
-// <p>${description}<p>
-// </div>
-// <img class="img-responsive" src="${image}"/>
-// </div>
-// </a>`
-// document.getElementById("data").append(cityElement);
-// }
+
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
