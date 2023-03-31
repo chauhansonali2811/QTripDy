@@ -39,11 +39,11 @@ function addAdventureToDOM(adventures) {
   adventureElement.innerHTML=`
   <a href="detail/?adventure=${key.id}" id="${key.id}">
   <div class="activity-card">
+  <div>
   <div class="category-banner">${key.category}</div>
   <div class="activity-card img">
   <img class="img-responsive" src="${key.image}"/>
   </div>
-  <div>
   <div class="d-flex justify-content-around">
   <h6>${key.name}</h6>
   <h6>₹${key.costPerHead}</h6>
